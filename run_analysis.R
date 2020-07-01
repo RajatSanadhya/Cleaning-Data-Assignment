@@ -2,6 +2,7 @@
 ## Author <- Rajat Sanadhya
 
 ## Downloading the data
+dir.create(file.path(getwd(),"Data"))
 download.file('https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip',file.path(getwd(),"Data/data.zip"))
 unzip("data.zip")
 
@@ -21,7 +22,7 @@ train <- train[,required_features,with=FALSE] ## using only required features
 names(train) <- measurements ## setting correct feature names
 train_activities <- fread(file.path(getwd(), "Data/UCI HAR Dataset/train/Y_train.txt")) ## reading activity data
 names(train_activities) <- "activity"
-train_subjects <- fread(file.path(getwd(), "Data/UCI HAR Dataset/train/subject_train.txt"));
+train_subjects <- fread(file.path(getwd(), "Data/UCI HAR Dataset/train/subject_train.txt"))
 names(train_subjects) <- "subjectNumber"
 train <- cbind(train_subjects, train_activities, train)
 
@@ -31,7 +32,7 @@ test <- test[,required_features,with=FALSE] ## using only required features
 names(test) <- measurements ## setting correct feature names
 test_activities <- fread(file.path(getwd(), "Data/UCI HAR Dataset/test/Y_test.txt")) ## reading activity data
 names(test_activities) <- "activity"
-test_subjects <- fread(file.path(getwd(), "Data/UCI HAR Dataset/test/subject_test.txt"));
+test_subjects <- fread(file.path(getwd(), "Data/UCI HAR Dataset/test/subject_test.txt"))
 names(test_subjects) <- "subjectNumber"
 test <- cbind(test_subjects, test_activities, test)
 
